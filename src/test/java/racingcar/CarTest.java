@@ -3,6 +3,11 @@ package racingcar;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.IntStream;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.catchThrowable;
 
@@ -50,5 +55,16 @@ public class CarTest {
     void carsAdvanceTest() {
         cars = cars.settingCars("qwe,asd,zxc");
         cars = cars.advance();
+    }
+
+    @Test
+    @DisplayName("우승자 뽑기")
+    void getWinnersGroupTest() {
+        Cars winnerGroups = cars.getWinnerGroup();
+        List<Integer> list = Arrays.asList(1, 2, 5, 4, 5);
+        Integer max = Collections.max(list);
+        int[] indices = IntStream.range(0, list.size())
+                .filter(i -> list.get(i) == max)
+                .toArray();
     }
 }
