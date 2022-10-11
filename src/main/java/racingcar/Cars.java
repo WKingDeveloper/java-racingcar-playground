@@ -10,6 +10,10 @@ public class Cars {
         this.cars.add(car);
     }
 
+    public List<Car> getCars() {
+        return cars;
+    }
+
     public boolean carsValidation() {
         if (this.cars.stream().findAny().filter(car -> !car.getName().carNameValidation()).isPresent()){
             return false;
@@ -18,5 +22,10 @@ public class Cars {
             return false;
         }
         return true;
+    }
+
+    public Cars advance() {
+        this.cars.stream().forEach(car -> car.advance());
+        return this;
     }
 }

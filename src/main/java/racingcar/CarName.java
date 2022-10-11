@@ -7,6 +7,10 @@ public class CarName {
         this.name = name;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public boolean carNameValidation() {
         if (1 > this.name.length() || this.name.length() > 5) {
             return false;

@@ -24,12 +24,19 @@ public class CarTest {
 
     @Test
     @DisplayName("자동차 리스트 검증 코드 만들기")
-    void carValidation() {
+    void carValidationTest() {
         Cars cars1 = car.settingCars("qwe,asd,zxc");
         Cars cars2 = car.settingCars("qwe");
-        Cars cars3 = car.settingCars("asdzxc");
+        Cars cars3 = car.settingCars("qwe,asdzxc");
         assertThat(cars1.carsValidation()).isEqualTo(true);
         assertThat(cars2.carsValidation()).isEqualTo(false);
         assertThat(cars3.carsValidation()).isEqualTo(false);
+    }
+
+    @Test
+    @DisplayName("60% 확률로 자동차 전진시키기")
+    void carsAdvanceTest() {
+        Cars cars = car.settingCars("qwe,asd,zxc");
+        cars = cars.advance();
     }
 }

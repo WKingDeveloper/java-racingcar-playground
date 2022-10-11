@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.Random;
+
 public class Car {
 
     private CarPosition position;
@@ -10,7 +12,12 @@ public class Car {
     }
 
     public Car(String name) {
+        this.position = new CarPosition();
         this.name = new CarName(name);
+    }
+
+    public int getPosition() {
+        return position.getPosition();
     }
 
     public CarName getName() {
@@ -24,5 +31,20 @@ public class Car {
             cars.addCar(new Car(name));
         }
         return cars;
+    }
+
+    public void advance() {
+        if(randomPassThrough()){
+            this.position.add();
+        }
+    }
+
+    private boolean randomPassThrough() {
+        Random random = new Random();
+        int num = random.nextInt(10);
+        if (num < 4) {
+            return false;
+        }
+        return true;
     }
 }
