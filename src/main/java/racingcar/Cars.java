@@ -6,18 +6,24 @@ import java.util.List;
 public class Cars {
     private List<Car> cars = new ArrayList<>();
 
-    public void addCar(Car car) {
-        this.cars.add(car);
-    }
-
     public List<Car> getCars() {
         return cars;
     }
 
-    public boolean carsValidation() {
-        if (this.cars.stream().findAny().filter(car -> !car.getName().carNameValidation()).isPresent()){
-            return false;
+    public Cars settingCars(String string) {
+        Cars cars = new Cars();
+        String[] splitString = string.split(",");
+        for (String name : splitString) {
+            cars.addCar(new Car(name));
         }
+        return cars;
+    }
+
+    private void addCar(Car car) {
+        this.cars.add(car);
+    }
+
+    public boolean carsValidation() {
         if (this.cars.size()<2) {
             return false;
         }

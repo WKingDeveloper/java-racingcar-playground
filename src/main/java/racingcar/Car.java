@@ -7,10 +7,6 @@ public class Car {
     private CarPosition position;
     private CarName name;
 
-    public Car() {
-
-    }
-
     public Car(String name) {
         this.position = new CarPosition();
         this.name = new CarName(name);
@@ -20,18 +16,10 @@ public class Car {
         return position.getPosition();
     }
 
-    public CarName getName() {
-        return name;
+    public String getName() {
+        return name.getName();
     }
 
-    public Cars settingCars(String string) {
-        Cars cars = new Cars();
-        String[] splitString = string.split(",");
-        for (String name : splitString) {
-            cars.addCar(new Car(name));
-        }
-        return cars;
-    }
 
     public void advance() {
         if(randomPassThrough()){
