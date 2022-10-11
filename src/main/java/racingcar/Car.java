@@ -1,7 +1,5 @@
 package racingcar;
 
-import java.util.List;
-
 public class Car {
 
     private CarPosition position;
@@ -13,6 +11,10 @@ public class Car {
 
     public Car(String name) {
         this.name = new CarName(name);
+    }
+
+    public CarName getName() {
+        return name;
     }
 
     public Cars settingCars(String string) {

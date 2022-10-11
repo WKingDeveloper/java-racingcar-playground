@@ -1,6 +1,5 @@
 package racingcar;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -21,5 +20,16 @@ public class CarTest {
         assertThat(cars)
                 .usingRecursiveComparison()
                 .isEqualTo(predictCars);
+    }
+
+    @Test
+    @DisplayName("자동차 리스트 검증 코드 만들기")
+    void carValidation() {
+        Cars cars1 = car.settingCars("qwe,asd,zxc");
+        Cars cars2 = car.settingCars("qwe");
+        Cars cars3 = car.settingCars("asdzxc");
+        assertThat(cars1.carsValidation()).isEqualTo(true);
+        assertThat(cars2.carsValidation()).isEqualTo(false);
+        assertThat(cars3.carsValidation()).isEqualTo(false);
     }
 }

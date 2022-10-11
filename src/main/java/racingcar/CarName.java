@@ -7,4 +7,14 @@ public class CarName {
         this.name = name;
     }
 
+    public boolean carNameValidation() {
+        if (1 > this.name.length() || this.name.length() > 5) {
+            return false;
+        }
+        if (this.name == null) {
+            return false;
+        }
+        return true;
+    }
+
 }
