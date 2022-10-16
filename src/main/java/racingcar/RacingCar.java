@@ -9,16 +9,16 @@ public class RacingCar {
         Cars cars = new Cars();
         boolean isCarsValidation = false;
         while (!isCarsValidation){
-            String carNames = inputView.start();
+            String carNames = inputView.inputCarNames();
             try {
-                cars = cars.settingCars(carNames);
+                cars = cars.setCars(carNames);
             } catch (RuntimeException e) {
-                resultView.carNameMismatch();
+                resultView.showValidFalseCarName();
                 continue;
             }
 
-            if (!cars.carsValidation()) {
-                resultView.lackOfCarNumbers();
+            if (!cars.validCarsSize()) {
+                resultView.showValidFalseCarsSize();
                 continue;
             }
 
@@ -26,16 +26,16 @@ public class RacingCar {
 
         }
 
-        int round = inputView.setRound();
+        int round = inputView.inputNumberOfRound();
 
         for (int i = 0; i < round; i++) {
             cars = cars.advance();
-            resultView.roundResult(cars);
+            resultView.showRoundResult(cars);
         }
 
-        Cars winnerGroup = cars.getWinnerGroup();
+        Cars winnerGroup = cars.getWinnersGroup();
 
-        resultView.result(winnerGroup);
+        resultView.showWinnersGroup(winnerGroup);
 
     }
 }

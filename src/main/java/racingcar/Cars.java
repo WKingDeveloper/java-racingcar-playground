@@ -12,7 +12,7 @@ public class Cars {
         return cars;
     }
 
-    public Cars settingCars(String string) {
+    public Cars setCars(String string) {
         Cars cars = new Cars();
         String[] splitString = string.split(",");
         for (String name : splitString) {
@@ -25,7 +25,7 @@ public class Cars {
         this.cars.add(car);
     }
 
-    public boolean carsValidation() {
+    public boolean validCarsSize() {
         if (this.cars.size()<2) {
             return false;
         }
@@ -34,12 +34,12 @@ public class Cars {
 
     public Cars advance() {
         for (Car car : this.cars) {
-            car.advance(Utils.getRandomNumber());
+            car.advance(Utils.getRandomNumberBetweenOneAndNine());
         }
         return this;
     }
 
-    public Cars getWinnerGroup() {
+    public Cars getWinnersGroup() {
         Cars winners = new Cars();
         List<Integer> positions = new ArrayList<>();
         cars.stream().forEach(car -> positions.add(car.getPosition()));

@@ -4,9 +4,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.catchThrowable;
@@ -17,9 +14,9 @@ public class CarTest {
 
     @Test
     @DisplayName("자동차 리스트 입력 받기")
-    void settingCarsTest() {
+    void setCarsTest() {
 
-        cars = cars.settingCars("qwe,asd,zxc");
+        cars = cars.setCars("qwe,asd,zxc");
         assertThat(cars.getCars().get(0))
                 .usingRecursiveComparison()
                 .isEqualTo(new Car("qwe"));
@@ -35,24 +32,24 @@ public class CarTest {
 
     @Test
     @DisplayName("자동차 리스트 검증 코드 만들기")
-    void carValidationTest() {
-        Cars cars1 = cars.settingCars("qwe,asd");
-        Cars cars2 = cars.settingCars("qwe");
+    void validCarNameAndCarsSizeTest() {
+        Cars cars1 = cars.setCars("qwe,asd");
+        Cars cars2 = cars.setCars("qwe");
         Throwable thrown = catchThrowable(() -> {
-            cars.settingCars("qwe,asdzxc");
+            cars.setCars("qwe,asdzxc");
         });
         Throwable thrown2 = catchThrowable(() -> {
-            cars.settingCars(null);
+            cars.setCars(null);
         });
-        assertThat(cars1.carsValidation()).isEqualTo(true);
-        assertThat(cars2.carsValidation()).isEqualTo(false);
+        assertThat(cars1.validCarsSize()).isEqualTo(true);
+        assertThat(cars2.validCarsSize()).isEqualTo(false);
         assertThat(thrown).isInstanceOf(RuntimeException.class);
         assertThat(thrown2).isInstanceOf(RuntimeException.class);
     }
 
     @Test
     @DisplayName("자동차 전진테스트")
-    void carsAdvanceTest() {
+    void advanceCarTest() {
         Car wkd = new Car("WKD");
         Car kjs = new Car("KJS");
         wkd.advance(4);
@@ -64,7 +61,7 @@ public class CarTest {
     @Test
     @DisplayName("우승자 뽑기")
     void getWinnersGroupTest() {
-        cars = cars.settingCars("qwe,asd,zxc,ert,dfg");
+        cars = cars.setCars("qwe,asd,zxc,ert,dfg");
         cars.getCars().get(0).advance(3);
         cars.getCars().get(1).advance(3);
         cars.getCars().get(2).advance(4);
@@ -72,7 +69,7 @@ public class CarTest {
         cars.getCars().get(3).advance(3);
         cars.getCars().get(4).advance(4);
         cars.getCars().get(4).advance(4);
-        assertThat(cars.getWinnerGroup().getCars())
+        assertThat(cars.getWinnersGroup().getCars())
                 .isEqualTo(Arrays.asList(cars.getCars().get(2),cars.getCars().get(4)));
     }
 }

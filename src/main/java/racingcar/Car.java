@@ -20,13 +20,13 @@ public class Car {
 
 
     public void advance(int num) {
-        if(randomPassThrough(num)){
+        if(validNumber(num)){
             this.position.add();
         }
     }
 
-    private boolean randomPassThrough(int randomNumber) {
-        if (randomNumber < 4) {
+    private boolean validNumber(int num) {
+        if (num < 4) {
             return false;
         }
         return true;
