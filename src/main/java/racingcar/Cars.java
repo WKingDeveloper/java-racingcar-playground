@@ -33,7 +33,9 @@ public class Cars {
     }
 
     public Cars advance() {
-        this.cars.stream().forEach(car -> car.advance());
+        for (Car car : this.cars) {
+            car.advance(Utils.getRandomNumber());
+        }
         return this;
     }
 

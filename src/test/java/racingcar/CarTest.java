@@ -51,10 +51,14 @@ public class CarTest {
     }
 
     @Test
-    @DisplayName("60% 확률로 자동차 전진시키기")
+    @DisplayName("자동차 전진테스트")
     void carsAdvanceTest() {
-        cars = cars.settingCars("qwe,asd,zxc");
-        cars = cars.advance();
+        Car wkd = new Car("WKD");
+        Car kjs = new Car("KJS");
+        wkd.advance(4);
+        kjs.advance(3);
+        assertThat(wkd.getPosition()).isEqualTo(1);
+        assertThat(kjs.getPosition()).isEqualTo(0);
     }
 
     @Test

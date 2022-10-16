@@ -22,15 +22,6 @@ public class RacingCar {
         }
 
         int round = inputView.setRound();
-        /*round = inputView.setRound();
-        while (round == 0) {
-            try {
-                round = inputView.setRound();
-            } catch (Exception e) {
-                round = 0;
-                resultView.roundSettingFalse();
-            }
-        }*/
 
         for (int i = 0; i < round; i++) {
             cars = cars.advance();
