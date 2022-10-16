@@ -64,11 +64,15 @@ public class CarTest {
     @Test
     @DisplayName("우승자 뽑기")
     void getWinnersGroupTest() {
-        Cars winnerGroups = cars.getWinnerGroup();
-        List<Integer> list = Arrays.asList(1, 2, 5, 4, 5);
-        Integer max = Collections.max(list);
-        int[] indices = IntStream.range(0, list.size())
-                .filter(i -> list.get(i) == max)
-                .toArray();
+        cars = cars.settingCars("qwe,asd,zxc,ert,dfg");
+        cars.getCars().get(0).advance(3);
+        cars.getCars().get(1).advance(3);
+        cars.getCars().get(2).advance(4);
+        cars.getCars().get(2).advance(4);
+        cars.getCars().get(3).advance(3);
+        cars.getCars().get(4).advance(4);
+        cars.getCars().get(4).advance(4);
+        assertThat(cars.getWinnerGroup().getCars())
+                .isEqualTo(Arrays.asList(cars.getCars().get(2),cars.getCars().get(4)));
     }
 }
