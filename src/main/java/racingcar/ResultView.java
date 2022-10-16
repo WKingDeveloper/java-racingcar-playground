@@ -11,20 +11,25 @@ public class ResultView {
     }
 
     public void showRoundResult(Cars cars) {
+        String message = "";
         for (Car car : cars.getCars()) {
-            System.out.printf(car.getName() + " : ");
+            message += car.getName() + " : ";
             for (int i = 0; i < car.getPosition(); i++) {
-                System.out.printf("-");
+                message += "-";
             }
-            System.out.println();
+            System.out.println(message);
+            message = "";
         }
         System.out.println();
     }
 
     public void showWinnersGroup(Cars winnerGroup) {
+        String message = "";
         for (Car car : winnerGroup.getCars()) {
-            System.out.print(car.getName() + ", ");
+            message += car.getName() + ", ";
         }
-        System.out.println("가 최종 우승했습니다.");
+        message += "가 최종 우승했습니다.";
+        message = message.replace(", 가", "가");
+        System.out.println(message);
     }
 }
