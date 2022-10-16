@@ -17,8 +17,13 @@ public class RacingCar {
                 continue;
             }
 
-            isCarsValidation = cars.carsValidation();
-            resultView.lackOfCarNumbers();
+            if (!cars.carsValidation()) {
+                resultView.lackOfCarNumbers();
+                continue;
+            }
+
+            isCarsValidation = true;
+
         }
 
         int round = inputView.setRound();
